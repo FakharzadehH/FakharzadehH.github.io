@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" >
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;100;100;100&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'vazirmatn', sans-serif;
+            background-color: #f8fafc; /* Tailwind gray-50 */
+            text-align: justify;
+        }
+        .section-title {
+            border-bottom: 2px solid #e5e7eb; /* Tailwind gray-200 */
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.25rem; /* text-2xl */
+            font-weight: 600; /* font-semibold */
+            color: #1f2937; /* Tailwind gray-800 */
+            text-align: justify;
+        }
+        .job-title {
+            font-size: 1.1rem; /* text-lg */
+            font-weight: 600; /* font-semibold */
+            color: #111827; /* Tailwind gray-900 */
+        }
+        .company-details {
+            font-size: 1rem; /* text-base */
+            color: #4b5563; /* Tailwind gray-600 */
+            margin-bottom: 0.5rem;
+        }
+        .bullet-point {
+            margin-left: 1.1rem; /* ml-5 */
+            list-style-type: disc;
+            color: #374151; /* Tailwind gray-700 */
+            text-align: justify;
+        }
+
+        .skill-category {
+            font-weight: 600; /* font-semibold */
+            /* margin-top: 1rem; remove top margin as it's handled by container */
+            /* margin-bottom: 0.25rem; reduce bottom margin to bring text closer */
+            color: #1f2937; /* Tailwind gray-800 */
+            font-size: 0.9rem; /* text-base */
+            display: inline; /* Make title inline */
+        }
+        .skill-list {
+            
+            display: inline; /* Make skill list inline with title */
+            color: #1765e1; /* Tailwind gray-700 */
+            font-size: 0.9rem; /* Slightly smaller than category title */
+             /* Space after the colon */
+        }
+        /* Removed .skill-item styles */
+
+        .contact-icon {
+            width: 1.25rem; /* w-5 */
+            height: 1.25rem; /* h-5 */
+            margin-right: 0.5rem;
+            vertical-align: middle;
+        }
+        .summary-bold {
+            font-weight: 600; /* font-semibold */
+            color: #111827; /* Tailwind gray-900 */
+        }
+        /* Print-specific styles */
+        /* Print-specific styles */
+        /* Print-specific styles */
+        header .contact-links > a:not(:last-child)::after {
+            content: "•";
+            margin-left: 0.75rem; 
+            margin-right: 0.75rem; 
+            color: #9ca3af; /* Tailwind gray-400 or a color of your choice */
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        /* Print-specific styles */
+        @media print {
+            @page {
+                size: A4; 
+                margin-top: 1in;    
+                margin-bottom: 1in; 
+                margin-left: 0.75in; 
+                margin-right: 0.75in;
+                
+                @bottom-right {
+                    content: counter(page) " / " counter(pages); /* Page X / Y format */
+                    font-size: 9pt;
+                    color: #555555;
+                    padding-bottom: 0.25in; 
+                    padding-right: 0.25in;
+                }
+            }
+            
+            body {
+                background-color: #ffffff !important; 
+                -webkit-print-color-adjust: exact !important; 
+                color-adjust: exact !important; 
+                /* Explicitly set all body margins for print */
+                margin-top: 0.5in !important;    
+                margin-bottom: 0.5in !important; 
+                margin-left: 0.75in !important; 
+                margin-right: 0.75in !important;
+                padding: 0 !important;
+                font-size: 10pt !important; /* Reduce base font size for print */
+                counter-reset: page; /* Initialize page counter */
+            }
+            
+            .container {
+                box-shadow: none !important;
+                margin: 0 !important; /* Body margins will handle overall page spacing */
+                max-width: 100% !important; 
+                padding: 0 !important; 
+                border: none !important;
+                page-break-inside: avoid; /* Try to avoid breaking container across pages if possible */
+            }
+            section {
+                 page-break-inside: auto; /* Try to keep sections from breaking mid-way */
+            }
+            .section-title {
+                 border-bottom: 1px solid #ccc !important;
+                 page-break-after: avoid; /* Avoid breaking right after a title */
+            }
+            .skill-item {
+                background-color: #e0e7ff !important; 
+                color: #1765e1 !important; 
+                padding: 0.15rem 0.5rem !important; 
+                border-radius: 9999px !important; 
+                font-size: 8pt !important; 
+                margin-right: 0.25rem !important;
+                margin-bottom: 0.25rem !important;
+                display: inline-block !important; 
+                border: 1px solid #c7d2fe !important; 
+            }
+            header {
+                text-align: center !important; 
+                margin-bottom: 0.9rem !important; 
+            }
+            header h1 {
+                font-size: 24pt !important; 
+                margin-bottom: 0.25rem !important;
+            }
+
+            header .contact-links { 
+                display: flex !important;
+                flex-wrap: wrap !important; 
+                justify-content: center !important; 
+                align-items: center !important;
+                margin-left: auto !important; 
+                margin-right: auto !important; 
+                max-width: 90% !important; 
+                padding-left: 0 !important; 
+            }
+
+            header .contact-links > a {
+                margin-left: 0.25rem !important; 
+                margin-right: 0.25rem !important; 
+                margin-bottom: 0.25rem !important; 
+                white-space: nowrap; 
+                font-size: 9pt !important; 
+            }
+            
+            header .contact-links > a:not(:last-child)::after {
+                content: "•";
+                margin-left: 0.5rem !important; 
+                margin-right: 0.25rem !important; 
+                color: #4b5563 !important; 
+                display: inline-block !important; 
+                vertical-align: middle !important; 
+            }
+            
+            footer { /* This is the copyright footer, not the page number footer */
+                text-align: center !important; 
+                margin-top: 10rem !important; 
+                border-top: 1px solid #ccc !important;
+                font-size: 8pt !important; 
+                page-break-before: auto;
+            }
+        }
+    </style>
+</head>
+<body class="text-gray-800 leading-relaxed">
+
+    <div class="container mx-auto max-w-4xl p-6 md:p-16 bg-white shadow-2xl rounded-lg my-12">
+
+        <header class="text-center mb-10">
+            <h1 class="text-4xl md:text-4xl font-bold text-indigo-700 mb-2 mt-4">Hossein Fakharzadeh</h1>
+            <div class="flex flex-wrap justify-start items-center space-x-1 md:space-x-4 text-gray-600 ">
+                <a href="tel:+989915335969" class="hover:text-indigo-600 flex items-center">
+                    <svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.308 1.154a11.034 11.034 0 005.37 5.37l1.154-2.308a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                    +98 991 533 5969
+                </a>
+                <a href="mailto:fakharzadehh81@gmail.com" class="hover:text-indigo-600 flex items-center">
+                    <svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    fakharzadehh81@gmail.com
+                </a>
+                <a href="https://www.linkedin.com/in/HosseinFakharzadeh" class="hover:text-indigo-600 flex items-center" target="_blank" rel="noopener noreferrer">
+                    <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    HosseinFakharzadeh
+                </a>
+                 <a href="https://github.com/FakharzadehH" class="hover:text-indigo-600 flex items-center" target="_blank" rel="noopener noreferrer">
+                    <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    FakharzadehH
+                </a>
+            </div>
+        </header>
+
+        <section class="mb-8">
+            <h2 class="section-title">Summary</h2>
+            <p class="text-gray-700">
+                Software Engineer with 3+ years of experience. I specialize in designing <span class="summary-bold">reliable, scalable, real-time IoT platforms</span> serving <span class="summary-bold">150K+ users</span> and handling <span class="summary-bold">100K+ concurrent connections</span>. I thrive on solving <span class="summary-bold">high-availability challenges</span>, translating user insights into intuitive features and empowering colleagues through mentorship and collaboration, all while constantly seeking opportunities to streamline processes and elevate performance.
+            </p>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="section-title">Education</h2>
+            <div>
+                <h3 class="job-title">Bachelor of Science in Computer Engineering</h3>
+                <div class="flex justify-between items-center">
+                    <p class="company-details mb-0">Amirkabir University of Technology (Tehran Polytechnic) – Tehran, Iran</p>
+                    <p class="text-gray-700 font-medium">GPA: 17.3/20</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="section-title">Experience</h2>
+            <div class="mb-8">
+                <h3 class="job-title">ProjectBox</h3>
+                <p class="company-details">Software Engineer | May 2022 – Present</p>
+                <ul class="space-y-2">
+                    <li class="bullet-point" text ><strong>Platform Engineering & Scaling:</strong> Engineered, operated, and scaled a mission-critical IoT platform managing <strong class="summary-bold">over 150,000 online devices and 100,000+ concurrent live connections</strong>, processing real-time data and supporting robust bidirectional communication</li>
+                    <li class="bullet-point"><strong>System Reliability & Integrity:</strong> Ensured high uptime and data integrity of a system crucial for  vehicle security, user vehicle operability, and client company payroll calculations, by developing and refining backend services and infrastructure.</li>
+                    <li class="bullet-point"><strong>Critical API Migration:</strong> Led the full lifecycle of critical API migrations from Node.js to Golang. responsibilities included RFC design, backend implementation and deploying with shadow/fallback modes for <strong class="summary-bold">zero downtime, resulting in ~30% latency reduction</strong>.</li>
+                    <li class="bullet-point"><strong>Component-Based API Development:</strong> Designed and implemented a component-based API solution and accompanying frontend library that streamlined dynamic UI rendering for diverse device types, facilitating easier system updates and enabling a major redesign of complex user interface sections.</li>
+                    <li class="bullet-point"><strong>User-Centric Feature Enhancement:</strong> Championed user-centric design changes, such as the removal of "Delete Tracker" feature, which <strong class="summary-bold">reduced user errors and support calls while creating new revenue streams</strong> for tracker transfers.</li>
+                    <li class="bullet-point"><strong>Infrastructure Management:</strong> Managed and executed critical infrastructure tasks including creating database replications, <strong class="summary-bold">automating database backup using pgbackrest and S3 compatible storage</strong>, setting up new server and environments and API gateway setup.</li>
+                    <li class="bullet-point"><strong>Monitoring & Alerting Implementation:</strong> Ensured high availability and robust monitoring for critical IoT infrastructure by implementing solutions such as <strong class="summary-bold">Grafana Cloud integration</strong>, shipping application logs to <strong class="summary-bold">Loki</strong> and establishing on-call alerting systems. actively participated in on-call rotation and incident management.</li>
+                    <li class="bullet-point"><strong>Architectural Design Experience:</strong> Gained practical experience in contrasting and applying both microservices and monolithic architectural patterns to meet varying performance, scalability, and maintenance requirements.</li>
+                    <li class="bullet-point"><strong>Mentorship & Team Development:</strong> Mentored a frontend developer, guiding their development towards backend tasks, enabling them to assist with backend development, on-call responsibilities and infrastructure tasks.</li>
+                    <li class="bullet-point"><strong>Supplier Communication & Translation:</strong> Facilitated communications with a key IoT device supplier, serving as a technical translator for one week to ensure clarity and alignment on business and technical requirements.</li>
+
+                </ul>
+            </div>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="section-title">Skills</h2>
+            
+            <div>      
+                <div class="skill-category-container">
+                    <h4 class="skill-category">Languages & Runtimes:</h4>
+                    <p class="skill-list">Go (Golang), Javascript/Typescript, Node.js, Python, Java</p>
+                </div>
+
+                <div class="skill-category-container">
+                    <h4 class="skill-category">Databases & Data Stores:</h4>
+                    <p class="skill-list">PostgreSQL, PostGIS, TimescaleDB, S3, Redis</p>
+                </div>
+
+                <div class="skill-category-container">
+                    <h4 class="skill-category">Infrastructure & Orchestration:</h4>
+                    <p class="skill-list">Kubernetes, HAProxy, Nomad, ESXI</p>
+                </div>
+                
+                <div class="skill-category-container">
+                    <h4 class="skill-category">Monitoring & Analytics:</h4>
+                    <p class="skill-list">Grafana, Prometheus, Loki, Redash, SQL Dashboards</p>
+                </div>
+
+                <div class="skill-category-container">
+                    <h4 class="skill-category">Development Practices & Tools:</h4>
+                    <p class="skill-list">WebSockets, Microservices, API Design (RFCs), Custom Library Development</p>
+                </div>
+            </div>
+
+            <div>
+                <div class="skill-category-container">
+                    <h4 class="skill-category">Reliability & Resilience:</h4>
+                    <p class="skill-list">Backup & Recovery Automation, On-Call Incident Management, Disaster Recovery Planning, System Monitoring & Alerting (SMS, Telegram)</p>
+                </div>
+                <div class="skill-category-container">
+                    <h4 class="skill-category">System & Traffic Management:</h4>
+                    <p class="skill-list">Load Balancing, High-Load Traffic Management, Container Optimization</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="section-title">Languages</h2>
+            <div>
+                <p class="language-item"><strong>Persian:</strong> Native</p>
+                <p class="language-item"><strong>English:</strong> Proficient</p>
+            </div>
+        </section>
+        <footer class="text-center mt-12 pt-6 border-t border-gray-300">
+            <p class="text-sm text-gray-500">&copy; <span id="currentYear"></span> Hossein Fakharzadeh. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Script to set the current year in the footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>
